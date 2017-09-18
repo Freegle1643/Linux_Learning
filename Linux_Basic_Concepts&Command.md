@@ -12,7 +12,45 @@ Linux内所有数据、资料都是以文件的形态来呈现的（甚至包括
 
 
 
+#### 文件系统的挂载
 
+所谓挂载，就是利用一个目录当作接入点（进入点，挂载点），也就是说，进入了某个挂载点就可以读取该挂载点所联系的向下的分割槽中的所有文件目录，这个进入目录就叫挂载点。Linux系统最重要的就是根目录，所以该目录一定是要挂在到一个分割槽的，至于其他的目录我们可以根据需求来选择性挂载，或者挂载到不同的物理区域等。
+
+![Linux文件系统挂载](http://markdownnotebucket-1251801748.cossh.myqcloud.com/linux%2520learning/Linux_file_sys_mount.png)
+
+###### *图片来自鸟哥的Linux私房菜 vbird.org*
+
+
+
+#### TTY是什么意思？
+
+在早期的时候用户终端连接电脑是通过一种叫electromechanical teleprinters 或者 teletypewriters (TeleTYpewriter, TTY)的东西，从那之后这样的叫法就被延续下来了。
+
+#### PTS是什么意思？
+
+意思是pseudo terminal slave. 
+
+##### PTS v.s. TTY
+
+The difference between TTY and PTS is the type of connection to the computer. TTY ports are direct connections to the computer such as a keyboard/mouse or a serial connection to the device. PTS connections are SSH connections or telnet connections. All of these connections can connect to a shell which will allow you to issue commands to the computer.
+
+*https://www.question-defense.com/2009/09/11/what-do-pts-and-tty-mean-on-linux-what-is-the-difference-between-the-two-terminal-types*
+
+简而言之就是你用命令行什么的来操作电脑，你都会被视为一个PTS进程，例如：
+
+```bash
+  PID TTY          TIME CMD
+23480 pts/1    00:00:00 ps
+```
+
+如果我们想通过TTY来使用系统，则需要在Linux下使用**[Ctrl] + [Alt] + [F1]~[F6]** 来进行切换，F1-F6对应了不同的的tty终端，这个时候如果你在查看自己所在进程：
+
+```bash
+ PID TTY          TIME CMD
+4294 tty3     00:00:00 ps
+```
+
+*唯一不太舒服的就是如果是在虚拟机或者X11远程图形界面登陆的时候这样的切换会导致你的机器恢复到默认的分辨率，有一些烦人。*
 
 
 
@@ -48,6 +86,12 @@ cmdline中包含了Arguments passed to the Linux kernel at boot time.
 
 
 
+
+
+
+
+
+
 #### Linux的启动器（Boot Loader）
 
 常见的又LILO和GRUB（现在的发行版本多用此）
@@ -63,8 +107,27 @@ cmdline中包含了Arguments passed to the Linux kernel at boot time.
 
 
 
-
 ### 常用命令
+
+#### 查看以某些规律开头的所有指令
+
+```bash
+ubuntu@VM-250-138-ubuntu:~$ g[tab][tab]
+```
+
+输入某个你想得起来的开头，点击两次Tab按钮，就可以看到所有可用的以g开头的命令了。
+
+
+
+#### 查看某个指令的使用手册
+
+```bash
+ubuntu@VM-250-138-ubuntu:~$ man sudo
+```
+
+man是manual的简写，输入man [command]可以查看相关的使用手册
+
+
 
 #### 更新和升级软件
 
