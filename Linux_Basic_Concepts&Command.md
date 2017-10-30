@@ -153,7 +153,15 @@ actually installs newer versions of the packages you have. After updating the li
 
 `rm -rf` 删除非空目录
 
- 
+##### 复制
+
+`cp` 具体可以使用`cp --help`查看
+
+常用：
+
+`cp /path/to/somefile /path/to/destination ` 复制文件
+
+`cp -R /path/to/a/folder /path/to/destination` 复制文件夹（包含文件夹内容） 
 
 
 
